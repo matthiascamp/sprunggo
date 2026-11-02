@@ -4,6 +4,7 @@ The site uses six revised visualisations made with the built-in image generation
 
 | Asset | Final image direction |
 | --- | --- |
+| `hero-cutout.png` | Transparent pair of parallel prototype attachments for the hero, based on the real `detail.jpg` photo. Both show WALK / RUN / BOUNCE on the side and compact under-platform supports. The green glow is created in CSS behind the cutout. |
 | `studio-hero-lettered.webp` | Dark studio photograph of two prototype attachments, each with the exact side words WALK (yellow), RUN (green), BOUNCE (red). Preserve the device shape and lime straps. |
 | `studio-hero-wide.webp` | Wide dark studio composition of two prototype attachments, each fully visible with WALK (yellow), RUN (green), BOUNCE (red) on the outer side rail. Used for the desktop hero; the portrait image remains the phone source. |
 | `studio-detail-lettered.webp` | Close studio detail of one attachment on warm stone, with WALK RUN BOUNCE printed on its visible outer side rail. |

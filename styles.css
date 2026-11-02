@@ -59,7 +59,8 @@
 }
 @media(max-width:750px){
   /* Put the product in view immediately, then give the story room to breathe. */
-  .hero-visual{order:-1;min-height:clamp(360px,95vw,480px)}
+  .hero-visual{order:-1;min-height:clamp(230px,62vw,320px)}
+  .hero-sticker{display:none}
   .hero-copy{min-height:0;padding:clamp(42px,10vw,62px) clamp(20px,6vw,26px) 30px}
   .hero h1{font-size:clamp(58px,16vw,112px);margin:24px 0 20px}
   .hero-copy>p{max-width:46ch}
@@ -107,3 +108,89 @@
   .contact-footer{margin-top:48px}
   .contact-footer .contact-email{font-size:clamp(18px,5.2vw,36px);gap:6px}
 }
+
+
+/* ============================================================
+   Transparent hero cutout on the dark background with a green
+   CSS glow — no photographic rectangle behind the product.
+   ============================================================ */
+.hero-visual .hero-glow{position:absolute;top:50%;left:min(50%,490px);transform:translate(-50%,-50%);width:min(82%,620px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(212,251,56,.5) 0%,rgba(212,251,56,.22) 40%,rgba(212,251,56,0) 70%);filter:blur(14px);pointer-events:none;z-index:0}
+.hero-visual .hero-cutout{position:absolute;top:50%;left:0;transform:translateY(-50%);z-index:1;width:min(100%,980px);height:auto;max-height:100%;aspect-ratio:2/1;object-fit:contain;object-position:center;filter:drop-shadow(0 22px 40px rgba(0,0,0,.5))}
+@media(prefers-reduced-motion:no-preference){
+  .hero-visual .hero-glow{animation:hero-glow-pulse 6s ease-in-out infinite}
+}
+@keyframes hero-glow-pulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
+
+/* ============================================================
+   Video section — real prototype footage on the ink field.
+   ============================================================ */
+.video-section{background:var(--ink);color:var(--cream)}
+.video-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr);gap:clamp(24px,4vw,64px);align-items:end;margin:30px 0 clamp(36px,5vw,56px)}
+.video-intro .section-index span{color:#92978d}
+.video-intro .kicker{color:#9aa08f;margin-bottom:16px}
+.video-intro h2{font-size:clamp(56px,7.5vw,120px);line-height:.82;margin:0 0 18px}
+.video-intro h2 em{font-style:normal;color:var(--lime)}
+.video-intro p{font-size:16px;line-height:1.6;color:#c2c8bc;max-width:48ch;margin:0}
+.video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.video-card{margin:0;display:flex;flex-direction:column;background:#181b16;border:1px solid #2a2e24;overflow:hidden}
+.video-card video{width:100%;aspect-ratio:9/16;object-fit:contain;background:#000;display:block}
+.video-card figcaption{padding:18px 20px 22px;display:flex;flex-direction:column;gap:7px}
+.video-card figcaption span{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--lime)}
+.video-card figcaption strong{font-family:'Barlow Condensed',Impact,sans-serif;font-size:26px;font-weight:800;line-height:1}
+.video-card figcaption small{font-size:12px;color:#9aa08f}
+
+/* ============================================================
+   About section — company / product story on cream.
+   ============================================================ */
+.about-section{background:#e9e8df}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(32px,5vw,70px);align-items:start;margin-top:clamp(30px,4vw,48px)}
+.about-grid .kicker{color:#7a8273;margin-bottom:18px}
+.about-grid h2{font-size:clamp(64px,8vw,120px);line-height:.82;margin:0}
+.about-grid h2 em{font-style:normal;color:#a6c900}
+.about-copy p{font-size:17px;line-height:1.65;margin:0 0 18px}
+.about-copy p:last-child{margin-bottom:0}
+.about-note{border-left:3px solid var(--lime);padding-left:18px;font-size:14px;line-height:1.7;color:#4e544a}
+
+/* ============================================================
+   Original-site concept artwork — illustrations on the ink field.
+   ============================================================ */
+.original-art{background:var(--ink);color:var(--cream)}
+.original-art-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end;margin:clamp(26px,3.5vw,40px) 0 clamp(32px,4vw,44px)}
+.original-art-intro h2{font-size:clamp(56px,7.5vw,120px);line-height:.82;margin:0}
+.original-art-intro h2 em{font-style:normal;color:var(--lime)}
+.original-art-intro p{font-size:15px;line-height:1.7;color:#c2c8bc;max-width:50ch;margin:0}
+.original-art-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.original-art-grid figure{margin:0}
+.original-art-grid img{height:clamp(300px,34vw,440px);object-fit:contain;background:#181b16}
+.original-art-grid figcaption{padding-top:13px;font-size:11px;font-weight:700;letter-spacing:.14em;color:#c2c8bc}
+
+/* ============================================================
+   Mid-width and mobile behaviour for the new sections.
+   ============================================================ */
+@media(max-width:1100px){
+  .video-intro{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}
+  .about-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
+}
+@media(max-width:750px){
+  .video-intro{display:block}
+  .video-intro h2{font-size:clamp(46px,13vw,90px);margin:20px 0 16px}
+  .video-intro p{max-width:46ch}
+  .video-grid{grid-template-columns:1fr;gap:16px}
+  .video-card{width:100%;max-width:420px;margin-inline:auto}
+  .video-card video{aspect-ratio:9/16;height:auto;max-height:78svh;object-fit:contain}
+  .about-grid{display:block}
+  .about-grid h2{font-size:clamp(46px,13vw,90px);margin-bottom:26px}
+  .original-art-intro{display:block}
+  .original-art-intro h2{font-size:clamp(46px,13vw,90px);margin-bottom:18px}
+  .original-art-intro p{margin-top:18px;max-width:48ch}
+  .original-art-grid{grid-template-columns:1fr;gap:16px}
+  .original-art-grid img{height:auto;aspect-ratio:4/3}
+}
+
+/* ============================================================
+   Stability when zooming out / on very wide viewports: cap the
+   content measure and prevent any horizontal overflow.
+   ============================================================ */
+html,body{overflow-x:hidden}
+.concept-card:first-child .concept-image{background:#e8d4c0}
+.concept-card:first-child .concept-image img{object-fit:contain}
