@@ -33,8 +33,10 @@
 
 /* Viewport-sized desktop hero and a more focused phone layout. */
 @media(min-width:751px){
-  /* Header (82px) + hero + ticker (72px) fill one browser viewport. */
-  .hero{height:calc(100vh - 154px);height:calc(100svh - 154px);min-height:0}
+  /* Header (82px) + hero + ticker (72px) fill one browser viewport when the
+     copy fits; on short windows or zoom the hero grows past this floor
+     instead of clipping, so the ticker simply drops below the first fold. */
+  .hero{min-height:calc(100vh - 154px);min-height:calc(100svh - 154px)}
   /* Show the full landscape frame: both attachments and the WALK RUN BOUNCE
      lettering stay in view. The near-black image margins blend into the ink
      hero, so contain reads as one seamless studio field, not a letterbox. */
@@ -53,9 +55,6 @@
   .hero-copy>p{font-size:14px;line-height:1.4}
   .hero-actions{margin:10px 0 16px}
   .hero-meta{font-size:10px}
-}
-@media(min-width:751px) and (max-height:570px){
-  .hero-copy{overflow-y:auto}
 }
 @media(max-width:750px){
   /* Put the product in view immediately, then give the story room to breathe. */
@@ -115,7 +114,7 @@
    CSS glow — no photographic rectangle behind the product.
    ============================================================ */
 .hero-visual .hero-glow{position:absolute;top:50%;left:min(50%,490px);transform:translate(-50%,-50%);width:min(82%,620px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(212,251,56,.5) 0%,rgba(212,251,56,.22) 40%,rgba(212,251,56,0) 70%);filter:blur(14px);pointer-events:none;z-index:0}
-.hero-visual .hero-cutout{position:absolute;top:50%;left:0;transform:translateY(-50%);z-index:1;width:min(100%,980px);height:auto;max-height:100%;aspect-ratio:2/1;object-fit:contain;object-position:center;filter:drop-shadow(0 22px 40px rgba(0,0,0,.5))}
+.hero-visual .hero-cutout{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;width:min(90%,980px);height:auto;max-height:100%;aspect-ratio:2/1;object-fit:contain;object-position:center;filter:drop-shadow(0 22px 40px rgba(0,0,0,.5))}
 @media(prefers-reduced-motion:no-preference){
   .hero-visual .hero-cutout{animation:hero-shoes-in 2.1s linear backwards}
   .hero-visual .hero-glow{animation:hero-glow-in 2.1s cubic-bezier(.25,.6,.3,1) backwards,hero-glow-pulse 6s ease-in-out 2.1s infinite}
@@ -123,9 +122,9 @@
 @keyframes hero-shoes-in{
   0%{opacity:0;transform:translate3d(112%,-50%,0);animation-timing-function:cubic-bezier(.2,.7,.3,1)}
   10%{opacity:1}
-  62%{transform:translate3d(-1.2%,-50%,0);animation-timing-function:cubic-bezier(.4,0,.4,1)}
-  82%{transform:translate3d(.35%,-50%,0);animation-timing-function:cubic-bezier(.4,0,.4,1)}
-  100%{opacity:1;transform:translate3d(0,-50%,0)}
+  62%{transform:translate3d(-51.2%,-50%,0);animation-timing-function:cubic-bezier(.4,0,.4,1)}
+  82%{transform:translate3d(-49.65%,-50%,0);animation-timing-function:cubic-bezier(.4,0,.4,1)}
+  100%{opacity:1;transform:translate3d(-50%,-50%,0)}
 }
 @keyframes hero-glow-in{
   0%{opacity:0;transform:translate(-50%,-50%) scale(.72)}
